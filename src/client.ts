@@ -63,7 +63,7 @@ export interface ClientOptions {
   /**
    * Override the default base URL for the API, e.g., "https://api.example.com/v2/"
    *
-   * Defaults to process.env['EMCEES_20260311_BASE_URL'].
+   * Defaults to process.env['THE_EMCEES_PROJECT_BASE_URL'].
    */
   baseURL?: string | null | undefined;
 
@@ -117,7 +117,7 @@ export interface ClientOptions {
   /**
    * Set the log level.
    *
-   * Defaults to process.env['EMCEES_20260311_LOG'] or 'warn' if it isn't set.
+   * Defaults to process.env['THE_EMCEES_PROJECT_LOG'] or 'warn' if it isn't set.
    */
   logLevel?: LogLevel | undefined;
 
@@ -130,9 +130,9 @@ export interface ClientOptions {
 }
 
 /**
- * API Client for interfacing with the Emcees 20260311 API.
+ * API Client for interfacing with the The Emcees Project API.
  */
-export class Emcees20260311 {
+export class TheEmceesProject {
   apiKey: string;
 
   baseURL: string;
@@ -148,10 +148,10 @@ export class Emcees20260311 {
   private _options: ClientOptions;
 
   /**
-   * API Client for interfacing with the Emcees 20260311 API.
+   * API Client for interfacing with the The Emcees Project API.
    *
    * @param {string | undefined} [opts.apiKey=process.env['PETSTORE_API_KEY'] ?? undefined]
-   * @param {string} [opts.baseURL=process.env['EMCEES_20260311_BASE_URL'] ?? https://petstore3.swagger.io/api/v3] - Override the default base URL for the API.
+   * @param {string} [opts.baseURL=process.env['THE_EMCEES_PROJECT_BASE_URL'] ?? https://petstore3.swagger.io/api/v3] - Override the default base URL for the API.
    * @param {number} [opts.timeout=1 minute] - The maximum amount of time (in milliseconds) the client will wait for a response before timing out.
    * @param {MergedRequestInit} [opts.fetchOptions] - Additional `RequestInit` options to be passed to `fetch` calls.
    * @param {Fetch} [opts.fetch] - Specify a custom `fetch` function implementation.
@@ -160,13 +160,13 @@ export class Emcees20260311 {
    * @param {Record<string, string | undefined>} opts.defaultQuery - Default query parameters to include with every request to the API.
    */
   constructor({
-    baseURL = readEnv('EMCEES_20260311_BASE_URL'),
+    baseURL = readEnv('THE_EMCEES_PROJECT_BASE_URL'),
     apiKey = readEnv('PETSTORE_API_KEY'),
     ...opts
   }: ClientOptions = {}) {
     if (apiKey === undefined) {
-      throw new Errors.Emcees20260311Error(
-        "The PETSTORE_API_KEY environment variable is missing or empty; either provide it, or instantiate the Emcees20260311 client with an apiKey option, like new Emcees20260311({ apiKey: 'My API Key' }).",
+      throw new Errors.TheEmceesProjectError(
+        "The PETSTORE_API_KEY environment variable is missing or empty; either provide it, or instantiate the TheEmceesProject client with an apiKey option, like new TheEmceesProject({ apiKey: 'My API Key' }).",
       );
     }
 
@@ -177,14 +177,14 @@ export class Emcees20260311 {
     };
 
     this.baseURL = options.baseURL!;
-    this.timeout = options.timeout ?? Emcees20260311.DEFAULT_TIMEOUT /* 1 minute */;
+    this.timeout = options.timeout ?? TheEmceesProject.DEFAULT_TIMEOUT /* 1 minute */;
     this.logger = options.logger ?? console;
     const defaultLogLevel = 'warn';
     // Set default logLevel early so that we can log a warning in parseLogLevel.
     this.logLevel = defaultLogLevel;
     this.logLevel =
       parseLogLevel(options.logLevel, 'ClientOptions.logLevel', this) ??
-      parseLogLevel(readEnv('EMCEES_20260311_LOG'), "process.env['EMCEES_20260311_LOG']", this) ??
+      parseLogLevel(readEnv('THE_EMCEES_PROJECT_LOG'), "process.env['THE_EMCEES_PROJECT_LOG']", this) ??
       defaultLogLevel;
     this.fetchOptions = options.fetchOptions;
     this.maxRetries = options.maxRetries ?? 2;
@@ -719,10 +719,10 @@ export class Emcees20260311 {
     }
   }
 
-  static Emcees20260311 = this;
+  static TheEmceesProject = this;
   static DEFAULT_TIMEOUT = 60000; // 1 minute
 
-  static Emcees20260311Error = Errors.Emcees20260311Error;
+  static TheEmceesProjectError = Errors.TheEmceesProjectError;
   static APIError = Errors.APIError;
   static APIConnectionError = Errors.APIConnectionError;
   static APIConnectionTimeoutError = Errors.APIConnectionTimeoutError;
@@ -752,11 +752,11 @@ export class Emcees20260311 {
   users: API.Users = new API.Users(this);
 }
 
-Emcees20260311.Pets = Pets;
-Emcees20260311.Store = Store;
-Emcees20260311.Users = Users;
+TheEmceesProject.Pets = Pets;
+TheEmceesProject.Store = Store;
+TheEmceesProject.Users = Users;
 
-export declare namespace Emcees20260311 {
+export declare namespace TheEmceesProject {
   export type RequestOptions = Opts.RequestOptions;
 
   export {

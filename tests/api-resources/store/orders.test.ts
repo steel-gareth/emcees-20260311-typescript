@@ -1,8 +1,8 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import Emcees20260311 from 'emcees-20260311';
+import TheEmceesProject from 'emcees-20260311';
 
-const client = new Emcees20260311({
+const client = new TheEmceesProject({
   apiKey: 'My API Key',
   baseURL: process.env['TEST_API_BASE_URL'] ?? 'http://127.0.0.1:4010',
 });
@@ -35,7 +35,7 @@ describe('resource orders', () => {
         },
         { path: '/_stainless_unknown_path' },
       ),
-    ).rejects.toThrow(Emcees20260311.NotFoundError);
+    ).rejects.toThrow(TheEmceesProject.NotFoundError);
   });
 
   // Mock server tests are disabled

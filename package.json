@@ -1,8 +1,8 @@
 {
   "name": "emcees-20260311",
   "version": "0.0.1",
-  "description": "The official TypeScript library for the Emcees 20260311 API",
-  "author": "Emcees 20260311 <>",
+  "description": "The official TypeScript library for the The Emcees Project API",
+  "author": "The Emcees Project <>",
   "types": "dist/index.d.ts",
   "main": "dist/index.js",
   "type": "commonjs",
