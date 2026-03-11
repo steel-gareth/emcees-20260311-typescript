@@ -42,14 +42,14 @@ If you’d like to use the repository from source, you can either install from g
 To install via git:
 
 ```sh
-$ npm install git+ssh://git@github.com:stainless-sdks-staging/emcees-20260311-typescript.git
+$ npm install git+ssh://git@github.com:steel-gareth/emcees-20260311-typescript.git
 ```
 
 Alternatively, to link a local copy of the repo:
 
 ```sh
 # Clone
-$ git clone https://www.github.com/stainless-sdks-staging/emcees-20260311-typescript
+$ git clone https://www.github.com/steel-gareth/emcees-20260311-typescript
 $ cd emcees-20260311-typescript
 
 # With yarn
