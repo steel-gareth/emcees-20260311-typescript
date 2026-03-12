@@ -1,7 +1,7 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
 import type { FinalRequestOptions } from './request-options';
-import { type The3EmceesProject } from '../client';
+import { type The4EmceesProject } from '../client';
 import { formatRequestDetails, loggerFor } from './utils/log';
 
 export type APIResponseProps = {
@@ -14,7 +14,7 @@ export type APIResponseProps = {
 };
 
 export async function defaultParseResponse<T>(
-  client: The3EmceesProject,
+  client: The4EmceesProject,
   props: APIResponseProps,
 ): Promise<T> {
   const { response, requestLogID, retryOfRequestLogID, startTime } = props;
