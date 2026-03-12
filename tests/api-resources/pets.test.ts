@@ -1,8 +1,8 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import The2EmceesProject, { toFile } from 'emcees-20260311';
+import The3EmceesProject, { toFile } from 'emcees-20260311';
 
-const client = new The2EmceesProject({
+const client = new The3EmceesProject({
   apiKey: 'My API Key',
   baseURL: process.env['TEST_API_BASE_URL'] ?? 'http://127.0.0.1:4010',
 });
@@ -97,7 +97,7 @@ describe('resource pets', () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
       client.pets.findByStatus({ status: 'available' }, { path: '/_stainless_unknown_path' }),
-    ).rejects.toThrow(The2EmceesProject.NotFoundError);
+    ).rejects.toThrow(The3EmceesProject.NotFoundError);
   });
 
   // Mock server tests are disabled
@@ -117,7 +117,7 @@ describe('resource pets', () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
       client.pets.findByTags({ tags: ['string'] }, { path: '/_stainless_unknown_path' }),
-    ).rejects.toThrow(The2EmceesProject.NotFoundError);
+    ).rejects.toThrow(The3EmceesProject.NotFoundError);
   });
 
   // Mock server tests are disabled
@@ -137,7 +137,7 @@ describe('resource pets', () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
       client.pets.updateByID(0, { name: 'name', status: 'status' }, { path: '/_stainless_unknown_path' }),
-    ).rejects.toThrow(The2EmceesProject.NotFoundError);
+    ).rejects.toThrow(The3EmceesProject.NotFoundError);
   });
 
   // Mock server tests are disabled

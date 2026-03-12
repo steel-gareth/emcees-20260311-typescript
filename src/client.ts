@@ -63,7 +63,7 @@ export interface ClientOptions {
   /**
    * Override the default base URL for the API, e.g., "https://api.example.com/v2/"
    *
-   * Defaults to process.env['THE_2_EMCEES_PROJECT_BASE_URL'].
+   * Defaults to process.env['THE_3_EMCEES_PROJECT_BASE_URL'].
    */
   baseURL?: string | null | undefined;
 
@@ -117,7 +117,7 @@ export interface ClientOptions {
   /**
    * Set the log level.
    *
-   * Defaults to process.env['THE_2_EMCEES_PROJECT_LOG'] or 'warn' if it isn't set.
+   * Defaults to process.env['THE_3_EMCEES_PROJECT_LOG'] or 'warn' if it isn't set.
    */
   logLevel?: LogLevel | undefined;
 
@@ -130,9 +130,9 @@ export interface ClientOptions {
 }
 
 /**
- * API Client for interfacing with the The 2 Emcees Project API.
+ * API Client for interfacing with the The 3 Emcees Project API.
  */
-export class The2EmceesProject {
+export class The3EmceesProject {
   apiKey: string;
 
   baseURL: string;
@@ -148,10 +148,10 @@ export class The2EmceesProject {
   private _options: ClientOptions;
 
   /**
-   * API Client for interfacing with the The 2 Emcees Project API.
+   * API Client for interfacing with the The 3 Emcees Project API.
    *
    * @param {string | undefined} [opts.apiKey=process.env['PETSTORE_API_KEY'] ?? undefined]
-   * @param {string} [opts.baseURL=process.env['THE_2_EMCEES_PROJECT_BASE_URL'] ?? https://petstore3.swagger.io/api/v3] - Override the default base URL for the API.
+   * @param {string} [opts.baseURL=process.env['THE_3_EMCEES_PROJECT_BASE_URL'] ?? https://petstore3.swagger.io/api/v3] - Override the default base URL for the API.
    * @param {number} [opts.timeout=1 minute] - The maximum amount of time (in milliseconds) the client will wait for a response before timing out.
    * @param {MergedRequestInit} [opts.fetchOptions] - Additional `RequestInit` options to be passed to `fetch` calls.
    * @param {Fetch} [opts.fetch] - Specify a custom `fetch` function implementation.
@@ -160,13 +160,13 @@ export class The2EmceesProject {
    * @param {Record<string, string | undefined>} opts.defaultQuery - Default query parameters to include with every request to the API.
    */
   constructor({
-    baseURL = readEnv('THE_2_EMCEES_PROJECT_BASE_URL'),
+    baseURL = readEnv('THE_3_EMCEES_PROJECT_BASE_URL'),
     apiKey = readEnv('PETSTORE_API_KEY'),
     ...opts
   }: ClientOptions = {}) {
     if (apiKey === undefined) {
-      throw new Errors.The2EmceesProjectError(
-        "The PETSTORE_API_KEY environment variable is missing or empty; either provide it, or instantiate the The2EmceesProject client with an apiKey option, like new The2EmceesProject({ apiKey: 'My API Key' }).",
+      throw new Errors.The3EmceesProjectError(
+        "The PETSTORE_API_KEY environment variable is missing or empty; either provide it, or instantiate the The3EmceesProject client with an apiKey option, like new The3EmceesProject({ apiKey: 'My API Key' }).",
       );
     }
 
@@ -177,14 +177,14 @@ export class The2EmceesProject {
     };
 
     this.baseURL = options.baseURL!;
-    this.timeout = options.timeout ?? The2EmceesProject.DEFAULT_TIMEOUT /* 1 minute */;
+    this.timeout = options.timeout ?? The3EmceesProject.DEFAULT_TIMEOUT /* 1 minute */;
     this.logger = options.logger ?? console;
     const defaultLogLevel = 'warn';
     // Set default logLevel early so that we can log a warning in parseLogLevel.
     this.logLevel = defaultLogLevel;
     this.logLevel =
       parseLogLevel(options.logLevel, 'ClientOptions.logLevel', this) ??
-      parseLogLevel(readEnv('THE_2_EMCEES_PROJECT_LOG'), "process.env['THE_2_EMCEES_PROJECT_LOG']", this) ??
+      parseLogLevel(readEnv('THE_3_EMCEES_PROJECT_LOG'), "process.env['THE_3_EMCEES_PROJECT_LOG']", this) ??
       defaultLogLevel;
     this.fetchOptions = options.fetchOptions;
     this.maxRetries = options.maxRetries ?? 2;
@@ -719,10 +719,10 @@ export class The2EmceesProject {
     }
   }
 
-  static The2EmceesProject = this;
+  static The3EmceesProject = this;
   static DEFAULT_TIMEOUT = 60000; // 1 minute
 
-  static The2EmceesProjectError = Errors.The2EmceesProjectError;
+  static The3EmceesProjectError = Errors.The3EmceesProjectError;
   static APIError = Errors.APIError;
   static APIConnectionError = Errors.APIConnectionError;
   static APIConnectionTimeoutError = Errors.APIConnectionTimeoutError;
@@ -752,11 +752,11 @@ export class The2EmceesProject {
   users: API.Users = new API.Users(this);
 }
 
-The2EmceesProject.Pets = Pets;
-The2EmceesProject.Store = Store;
-The2EmceesProject.Users = Users;
+The3EmceesProject.Pets = Pets;
+The3EmceesProject.Store = Store;
+The3EmceesProject.Users = Users;
 
-export declare namespace The2EmceesProject {
+export declare namespace The3EmceesProject {
   export type RequestOptions = Opts.RequestOptions;
 
   export {
