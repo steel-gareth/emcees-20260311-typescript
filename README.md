@@ -1,4 +1,4 @@
-# Conflictingfly Named Typescript Library
+# Conflictingfly NamewpxeapVP-20260311200911 d Typescript Library
 
 [![NPM version](<https://img.shields.io/npm/v/emcees-20260311.svg?label=npm%20(stable)>)](https://npmjs.org/package/emcees-20260311) ![npm bundle size](https://img.shields.io/bundlephobia/minzip/emcees-20260311)
 
